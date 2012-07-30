@@ -1,0 +1,25 @@
+ClickNLoad2txt
+
+A simple Python script to display the contents of Click'n'Load[1] links.
+
+Requirements:
+ * Python 3
+ * OpenSSL
+ * A JavaScript interpreter.
+   Rhino is the default, but anything that can evaluate JavaScript should work.
+   You might have to modify the jk_eval() method in the script to suit your
+   needs.
+
+Usage:
+Start the script before opening a web page containing the Click'n'Load link.
+The script will start a small web server listening on port 9666 to handle the
+requests required for Click'n'Load to work. Accessing the link opens a page
+displaying the contents of the Click'n'Load link.
+The contents will additionally be printed to stdout.
+
+Notes:
+NoScript and similar tools might warn you about a Cross Site Scripting attack
+when accessing Click'n'Load links. This is due to the design of Click'n'Load.
+Refer to [1] for details.
+
+[1] http://jdownloader.org/knowledge/wiki/glossary/cnl2
