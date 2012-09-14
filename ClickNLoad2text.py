@@ -32,7 +32,7 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 		self.URL_MAPPING = [
 			URLMap("/", get_fn=self.alive),
 			URLMap("/jdcheck.js", get_fn=self.jdcheck),
-#			URLMap("/crossdomain.xml", get_fn=self.crossdomain),
+			URLMap("/crossdomain.xml", get_fn=self.crossdomain),
 
 			URLMap("/flash/add", post_fn=self.add),
 #			URLMap("/addcrypted", post_fn=self.addcrypted),
@@ -82,15 +82,15 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 
 	@staticmethod
 	def jdcheck():
-		return "jdownloader=true; var version='10500';"
+		return "jdownloader=true; var version='17461';"
 
 	@staticmethod
 	def crossdomain():
 		return """
-			<?xml version='1.0'?>
-			<!DOCTYPE cross-domain-policy SYSTEM 'http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd'>
+			<?xml version="1.0" ?>
+			<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
 			<cross-domain-policy>
-			<allow-access-from domain='*' />
+				<allow-access-from domain="*" />
 			</cross-domain-policy>
 		"""
 
