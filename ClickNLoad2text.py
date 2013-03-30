@@ -115,7 +115,7 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 		crypted = parameters.getfirst("crypted")
 		jk = parameters.getfirst("jk")
 
-		key = jk_eval(jk).strip()
+		key = jk_eval(jk)
 
 		uncrypted = aes_decrypt(crypted, key)
 		urls = [result for result in uncrypted.replace('\x00', '').split("\r\n") if len(result) > 0]
@@ -158,7 +158,7 @@ def aes_encrypt(data, key):
 	key	- hex encoded password
 	"""
 	enc_cmd = ["openssl", "enc", "-e", "-AES-128-CBC", "-nosalt", "-base64", "-A", "-K", key, "-iv", key]
-	return call(enc_cmd, data)
+	return call(enc_cmd, data).strip()
 
 def aes_decrypt(data, key):
 	"""
@@ -173,7 +173,7 @@ def jk_eval(script):
 	script	- JavaScript code to evaluate
 	"""
 	js_cmd = ["jsscript-1.6", "-e", script, "-e", "print(f());"]
-	return call(js_cmd)
+	return call(js_cmd).strip()
 
 if __name__ == "__main__":
 	httpd = http.server.HTTPServer(("127.0.0.1", 9666), CNLHandler)
