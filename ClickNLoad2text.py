@@ -171,11 +171,21 @@ def aes_decrypt(data, key):
 	dec_cmd = ["openssl", "enc", "-d", "-AES-128-CBC", "-nosalt", "-nopad", "-base64", "-A", "-K", key, "-iv", key]
 	return call(dec_cmd, data).strip()
 
-def jk_eval(script):
+def jk_eval(f_def):
 	"""
-	script	- JavaScript code to evaluate
+	f_def	- JavaScript code that defines a function f -> String
 	"""
-	js_cmd = ["jsscript-1.6", "-e", script, "-e", "print(f());"]
+	f_call = """
+	if(typeof console !== 'undefined') {
+		console.log(f());
+	} else {
+		print(f());
+	}
+	"""
+	# Rhino
+	js_cmd = ["jsscript-1.6", "-e", f_def + ";" + f_call]
+	# NodeJS
+	#js_cmd = ["node", "-e", f_def + ";" + f_call]
 	return call(js_cmd).strip()
 
 if __name__ == "__main__":
