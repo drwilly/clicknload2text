@@ -14,7 +14,7 @@ import ClickNLoad2text
 class CNLHandlerTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
-		ip, port = "127.0.0.1", 0 # port 0 -> random unused port
+		ip, port = "localhost", 0 # port 0 -> random unused port
 		cls.httpd = http.server.HTTPServer((ip, port), ClickNLoad2text.CNLHandler)
 		server_thread = threading.Thread(target=cls.httpd.serve_forever)
 		# Exit the server thread when the main thread terminates

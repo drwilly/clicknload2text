@@ -179,7 +179,7 @@ def jk_eval(script):
 	return call(js_cmd).strip()
 
 if __name__ == "__main__":
-	httpd = http.server.HTTPServer(("127.0.0.1", 9666), CNLHandler)
+	httpd = http.server.HTTPServer(("localhost", 9666), CNLHandler)
 	try:
 		httpd.serve_forever()
 	except KeyboardInterrupt:
