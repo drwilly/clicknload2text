@@ -74,7 +74,7 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 			self.send_response(200, "OK")
 			self.end_headers()
 			self.wfile.write(response_fn().encode())
-		except Exception as e :
+		except Exception as e:
 			self.send_error(500, str(e))
 			return
 
@@ -91,9 +91,9 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 	def crossdomain():
 		return """
 			<?xml version="1.0" ?>
-			<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+			<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
 			<cross-domain-policy>
-				<allow-access-from domain="*" />
+				<allow-access-from domain="*" secure="false" />
 			</cross-domain-policy>
 		"""
 
