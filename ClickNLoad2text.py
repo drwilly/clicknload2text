@@ -168,7 +168,7 @@ def aes_decrypt(data, key):
 	data	- base64 encoded input
 	key	- hex encoded password
 	"""
-	dec_cmd = ["openssl", "enc", "-d", "-AES-128-CBC", "-nosalt", "-nopad", "-base64", "-A", "-K", key, "-iv", key]
+	dec_cmd = ["openssl", "enc", "-d", "-AES-128-CBC", "-nosalt", "-base64", "-A", "-K", key, "-iv", key, "-nopad"]
 	return call(dec_cmd, data).strip()
 
 def jk_eval(f_def):
