@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# See LICESNE file for copyright and license details
+# See LICENSE file for copyright and license details
 #
 # ClickNLoad2text is a simple Python script to display the contents of Click'n'Load links.
 #
