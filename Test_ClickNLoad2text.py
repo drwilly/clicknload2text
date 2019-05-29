@@ -13,10 +13,10 @@ import ClickNLoad2text
 
 class CNLHandlerTest(unittest.TestCase):
 	@classmethod
-	def setUpClass(cls):
+	def setUpClass(clazz):
 		ip, port = "localhost", 0 # port 0 -> random unused port
-		cls.httpd = http.server.HTTPServer((ip, port), ClickNLoad2text.CNLHandler)
-		server_thread = threading.Thread(target=cls.httpd.serve_forever)
+		clazz.httpd = http.server.HTTPServer((ip, port), ClickNLoad2text.CNLHandler)
+		server_thread = threading.Thread(target=clazz.httpd.serve_forever)
 		# Exit the server thread when the main thread terminates
 		server_thread.daemon = True
 		server_thread.start()
@@ -102,8 +102,8 @@ class CNLHandlerTest(unittest.TestCase):
 			return f.read().decode(ENCODING)
 
 	@classmethod
-	def tearDownClass(cls):
-		cls.httpd.shutdown()
+	def tearDownClass(clazz):
+		clazz.httpd.shutdown()
 
 if __name__ == "__main__":
 	unittest.main()
