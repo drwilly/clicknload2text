@@ -176,11 +176,11 @@ def jk_eval(f_def):
 	f_def	- JavaScript code that defines a function f -> String
 	"""
 	f_call = """
-	if(typeof console !== 'undefined') {
-		console.log(f());
-	} else {
-		print(f());
-	}
+		if(typeof console !== 'undefined') {
+			console.log(f());
+		} else {
+			print(f());
+		}
 	"""
 	# Rhino
 	js_cmd = ["jsscript-1.6", "-e", f_def + ";" + f_call]
