@@ -6,8 +6,8 @@ Requirements:
  * Python 3
  * OpenSSL
  * A JavaScript interpreter.
-   Rhino is the default, but anything that can evaluate JavaScript should work.
-   You might have to modify the jk_eval() method in the script to suit your
+   Node is the default, but anything that can evaluate JavaScript should work.
+   You might have to modify the jk_eval() function in the script to suit your
    needs.
 
 Usage:

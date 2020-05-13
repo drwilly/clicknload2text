@@ -182,11 +182,11 @@ def jk_eval(f_def):
 			print(f());
 		}
 	"""
-	# Rhino
-	js_cmd = ["jsscript-1.6", "-e", f_def + ";" + f_call]
 	# NodeJS
-	#js_cmd = ["node", "-e", f_def + ";" + f_call]
-	return call(js_cmd).strip()
+	js_cmd = ["node"]
+	# Rhino
+	#js_cmd = ["jsscript-1.6"]
+	return call(js_cmd, ';'.join((f_def, f_call))).strip()
 
 if __name__ == "__main__":
 	httpd = http.server.HTTPServer(("localhost", 9666), CNLHandler)
