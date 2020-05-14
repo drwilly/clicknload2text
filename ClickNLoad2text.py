@@ -188,7 +188,7 @@ def jk_eval(f_def):
 	#js_cmd = ["jsscript-1.6"]
 	return call(js_cmd, ';'.join((f_def, f_call))).strip()
 
-if __name__ == "__main__":
+def main():
 	httpd = http.server.HTTPServer(("localhost", 9666), CNLHandler)
 	try:
 		httpd.serve_forever()
@@ -197,3 +197,5 @@ if __name__ == "__main__":
 	finally:
 		httpd.server_close()
 
+if __name__ == "__main__":
+	main()
