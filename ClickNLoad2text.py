@@ -139,7 +139,7 @@ class CNLHandler(http.server.BaseHTTPRequestHandler):
 		pass
 
 
-def format_package(name, urls, passwords=None):
+def format_package(name: str, urls, passwords=None) -> str:
 	buf = StringIO()
 	print('## Package:', name, sep='\t', file=buf)
 	if passwords is not None:
@@ -155,7 +155,7 @@ def call(cmd, input=None):
 	with p.stdout:
 		return p.stdout.read().decode()
 
-def aes_encrypt(data, key):
+def aes_encrypt(data: str, key: str) -> str:
 	"""
 	data	- base64 encoded input
 	key	- hex encoded password
@@ -163,7 +163,7 @@ def aes_encrypt(data, key):
 	enc_cmd = ["openssl", "enc", "-e", "-AES-128-CBC", "-nosalt", "-base64", "-A", "-K", key, "-iv", key]
 	return call(enc_cmd, data).strip()
 
-def aes_decrypt(data, key):
+def aes_decrypt(data: str, key: str) -> str:
 	"""
 	data	- base64 encoded input
 	key	- hex encoded password
@@ -171,7 +171,7 @@ def aes_decrypt(data, key):
 	dec_cmd = ["openssl", "enc", "-d", "-AES-128-CBC", "-nosalt", "-base64", "-A", "-K", key, "-iv", key, "-nopad"]
 	return call(dec_cmd, data).strip()
 
-def jk_eval(f_def):
+def jk_eval(f_def: str) -> str:
 	"""
 	f_def	- JavaScript code that defines a function f -> String
 	"""
